@@ -1,0 +1,74 @@
+.new-task {
+  background-color: #01CEB6;
+  color: #FFFFFF;
+  padding: 1.5em 0 1.5em;
+}
+
+.nw-t1 button {
+  background-color: transparent;
+  color: #FFFFFF;
+  margin: 0 11em 2em;
+
+  label {
+    margin-left: .5em;
+    vertical-align: sub;
+  }
+}
+
+.nw-t2 {
+  mat-label {
+    color: #FFFFFF;
+    width: 25em;
+  }
+
+  mat-checkbox {
+    color: #EFEFEF;
+  }
+
+  button {
+    border-radius: 5em;
+
+    label {
+      margin-left: .5em;
+      vertical-align: middle;
+    }
+  }
+}
+
+.show-tasks {
+  padding-top: 3em;
+  color: #4B9F8E;
+
+  .sw-t1 h2 {
+    margin-left: .8em;
+    line-height: 1.2em;
+  }
+
+  mat-form-field {
+    width: 25em;
+    border: none;
+  }
+}
+
+table {
+  margin: 2em auto;
+  width: 73%;
+  text-align: center;
+
+  th {
+    text-align: center;
+    color: #11766A;
+  }
+}
+
+.github {
+
+
+  button {
+    margin: 0 0 2em 90em;
+    background-color: #913E9E;
+    background-image: url('../../../assets/images/github.png');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+}
