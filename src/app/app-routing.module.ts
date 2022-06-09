@@ -4,11 +4,11 @@ import { TasksComponent } from './pages/tasks/tasks.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/tareas', pathMatch: 'full' },
-  { path: '**', component: TasksComponent },
+  { path: 'tareas', component: TasksComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

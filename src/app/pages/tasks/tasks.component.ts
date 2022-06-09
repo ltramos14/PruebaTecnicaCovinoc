@@ -1,25 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Task } from 'src/app/models/Task.model';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -28,12 +10,81 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TasksComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  /**
+   * Variable que describe las columnas de la tabla que contiene la lista de tareas
+   */
+  displayedColumns: string[] = ['id', 'title', 'state', 'delete'];
 
-  constructor() { }
+  /**
+   * Declaración del formulario de nueva tarea
+   */
+  formTask!: FormGroup;
 
-  ngOnInit(): void {
+  /**
+   * Variable que almacena la lista de tareas
+   */
+  public tasksList: Task[] = [];
+
+
+  constructor(
+    private taskService: TasksService,
+    private _formBuilder: FormBuilder
+  ) { }
+
+
+  ngOnInit() {
+    this.getTasksList();
+
+    this.formTask = this._formBuilder.group({
+      title: '',
+      state: false,
+    });
   }
+
+  /**
+   * Método que obtiene la lista de tareas a través del TaskService
+   */
+  getTasksList() {
+    this.taskService.getTasks().subscribe((data) => {
+      this.tasksList = data;
+    });
+  }
+
+  /**
+   * Método que toma una nueva lista del formulario formTask para agregar una tarea a la API
+   */
+  createNewTask() {
+    let task = new Task();
+    let now = new Date();
+
+    task.createdAt = now;
+    task.state = this.formTask.value.state;
+    task.title = this.formTask.value.title;
+
+    this.taskService.createTask(task).subscribe({
+      next: () => {
+        this.ngOnInit();
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
+  }
+
+  /**
+   * Método que elimina una tarea a través de su respectivo id
+   * @param task
+   */
+  deleteTask(task: Task) {
+    this.taskService.deleteTask(task.id).subscribe({
+      next: () => {
+        this.ngOnInit();
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
+  }
+
 
 }

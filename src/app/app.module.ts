@@ -7,14 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { ToolbarComponent } from './pages/shared/toolbar/toolbar.component';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input'
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTableModule} from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input'
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,18 +25,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ToolbarComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
 
     //Angular Material
-    MatToolbarModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatIconModule,
     MatInputModule,
-    MatCheckboxModule,
-    MatButtonModule,
     MatTableModule,
-
+    MatToolbarModule,
 
     //FlexLayout
     FlexLayoutModule

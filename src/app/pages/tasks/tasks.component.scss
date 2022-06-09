@@ -42,6 +42,7 @@
   .sw-t1 h2 {
     margin-left: .8em;
     line-height: 1.2em;
+    font-weight: bold;
   }
 
   mat-form-field {
@@ -58,11 +59,15 @@ table {
   th {
     text-align: center;
     color: #11766A;
+    font-size: 16px;
+  }
+
+  .stateTrue {
+    text-decoration: line-through;
   }
 }
 
 .github {
-
 
   button {
     margin: 0 0 2em 90em;
