@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
@@ -36,6 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatIconModule,
     MatInputModule,
+    MatSnackBarModule,
     MatTableModule,
     MatToolbarModule,
 

@@ -32,5 +32,4 @@ export class TasksService {
   deleteTask(id: string) {
     return this.http.delete(`${baseUrl}/${id}`);
   }
-
 }
